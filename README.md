@@ -4,7 +4,7 @@
 **Autores:** João William · Guilherme Frazão
 **Pergunta central:** *Quais fatores mais influenciam o salário de um profissional de dados no Brasil em 2024?*
 
-🔗 **Dashboard (Looker Studio):** `COLE_AQUI_O_LINK_PUBLICO`
+🔗 **Dashboard (Looker Studio):** `[COLE_AQUI_O_LINK_PUBLICO](https://datastudio.google.com/reporting/dd8b8e9e-ff30-466a-af7e-5dec5b95b85f)`
 📓 **Notebook:** [`notebook/joaowilliam-guilhermefrazao-analise.ipynb`](notebook/joaowilliam-guilhermefrazao-analise.ipynb)
 📄 **Relatório:** [`relatorio/joaowilliam-guilhermefrazao-relatorio.pdf`](relatorio/joaowilliam-guilhermefrazao-relatorio.pdf)
 
