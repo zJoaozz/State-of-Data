@@ -1,55 +1,141 @@
-# O que move o salário em dados no Brasil? — State of Data Brazil 2024–2025
+# 📊 O que move o salário em dados no Brasil?
+> Análise dos fatores que mais influenciam a remuneração de profissionais de dados no Brasil em 2024.
 
-**Trabalho Final · Análise Avançada de Dados · UNIFSA**
+![UNIFSA](https://img.shields.io/badge/UNIFSA-Engenharia%20de%20Software-1F4E79?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Looker Studio](https://img.shields.io/badge/Looker%20Studio-4285F4?style=for-the-badge&logo=google&logoColor=white)
+
+---
+
+## 📋 Sobre o Projeto
+
+Este trabalho analisa a base **State of Data Brazil 2024–2025** (Data Hackers + Bain & Company) — o maior mapeamento do mercado de dados e IA do Brasil, com **5.217 respondentes** e 400+ variáveis — para responder à pergunta central:
+
+> *"Quais fatores mais influenciam o salário de um profissional de dados no Brasil em 2024?"*
+
 **Autores:** João William · Guilherme Frazão
-**Pergunta central:** *Quais fatores mais influenciam o salário de um profissional de dados no Brasil em 2024?*
-
-🔗 **Dashboard (Looker Studio):** `(https://datastudio.google.com/reporting/dd8b8e9e-ff30-466a-af7e-5dec5b95b85f)`
-📓 **Notebook:** [`notebook/joaowilliam-guilhermefrazao-analise.ipynb`](notebook/joaowilliam-guilhermefrazao-analise.ipynb)
-📄 **Relatório:** [`relatorio/joaowilliam-guilhermefrazao-relatorio.pdf`](relatorio/joaowilliam-guilhermefrazao-relatorio.pdf)
+**Disciplina:** Análise Avançada de Dados · UNIFSA
+**Professora:** Ma. Heloísa Guimarães
 
 ---
 
-## Resposta à pergunta central
+## 🔗 Links
 
-Analisando 4.863 profissionais (dos 5.217 respondentes, após remover quem não informou salário), o fator que **mais** influencia o salário é o **tempo de experiência** — e, no mesmo eixo, a **senioridade**. A mediana salarial sobe de **R$ 3.500 (Júnior)** para **R$ 7.000 (Pleno)** e **R$ 14.000 (Sênior)** — um Sênior ganha cerca de **300% a mais** que um Júnior — e a correlação de Spearman é forte (ρ = 0,73 para senioridade; ρ = 0,64 para experiência, ambos p < 0,001). Logo atrás vêm **cargo/papel técnico** (Engenheiro de ML e Arquiteto de Dados lideram, com mediana R$ 14.000; Analista de BI fica na base, R$ 5.000), **nível de ensino** (mestrado/doutorado R$ 14.000) e **ser gestor** (R$ 18.000 vs R$ 10.000). A **região** importa menos do que se imagina (Sul/Sudeste R$ 10.000 vs demais R$ 7.000).
-
-Há um segundo grupo de fatores que pesa menos em amplitude, mas é o mais relevante eticamente: **gênero** e **cor/raça**. Na média, homens ganham **19,6% a mais** que mulheres — e o ponto decisivo é que, ao **controlar por senioridade**, a diferença é nula entre Júniores, pequena entre Plenos (+4%) e salta para **+17,6% entre Sêniores** (+28,6% na mediana). Ou seja: o gap se concentra exatamente no topo, onde as mulheres já são minoria (21% dos sêniores). Por cor/raça, profissionais brancos ganham **22,1% a mais** que pretos na média.
-
-Em resumo: salário em dados é movido principalmente por **mérito acumulável** (experiência, senioridade, formação, papel técnico) — controlável pelo profissional —, mas os dados também revelam diferenças por gênero e raça que não se explicam por mérito e merecem leitura crítica.
+| Entregável | Link |
+|---|---|
+| 📊 Dashboard (Looker Studio) | [Acessar dashboard](https://datastudio.google.com/reporting/dd8b8e9e-ff30-466a-af7e-5dec5b95b85f) |
+| 📓 Notebook de análise | [notebook/joaowilliam-guilhermefrazao-analise.ipynb](notebook/joaowilliam-guilhermefrazao-analise.ipynb) |
+| 📄 Relatório narrativo (PDF) | [relatorio/joaowilliam-guilhermefrazao-relatorio.pdf](relatorio/joaowilliam-guilhermefrazao-relatorio.pdf) |
 
 ---
 
-## Principais decisões de limpeza
+## 💡 Resposta à Pergunta Central
 
-| Problema | Decisão tomada | Por quê |
+A análise de **4.863 profissionais** revelou que os fatores que mais movem o salário são, em ordem de impacto:
+
+| # | Fator | Amplitude salarial |
 |---|---|---|
-| Salário em texto (faixas) | Convertido para o **ponto médio** (ex.: "R$ 4.001 a R$ 6.000" → 5.000). Abertas: "Menos de N" → N×0,5; "Acima de N" → N×1,2 | Sem número não há estatística; ponto médio é a aproximação padrão |
-| Colunas crípticas (`2.h_...`, `1.b_...`) | Detecção automática + renomeação de 13 colunas-chave via rótulo/código/valores | Legibilidade e reprodutibilidade |
-| *Missing* em gênero e raça | **Não imputados** — "Prefiro não informar" mantido | A não-resposta é informação; imputar distorceria a análise de desigualdade |
+| 🥇 | Tempo de experiência | R$ 16.142 |
+| 🥈 | Nível de ensino | R$ 11.788 |
+| 🥉 | Cargo/papel técnico | R$ 10.549 |
+| 4º | Senioridade | R$ 10.502 |
+| 5º | Ser gestor | R$ 10.252 |
+| 6º | Região | R$ 4.069 |
+| 7º | Cor/raça | R$ 3.763 |
+| 8º | Gênero | R$ 2.477 |
+
+### 📈 Senioridade em números
+- **Júnior:** mediana R$ 3.500
+- **Pleno:** mediana R$ 7.000
+- **Sênior:** mediana R$ 14.000 *(+300% vs Júnior)*
+- Correlação de Spearman: **ρ = 0,73** (p < 0,001)
+
+### ⚖️ Achado ético: gap de gênero cresce com a senioridade
+Na média global, homens ganham **19,6% a mais** que mulheres. Mas o ponto decisivo está no controle por nível:
+
+| Nível | Gap (média) |
+|---|---|
+| Júnior | −1% (sem diferença) |
+| Pleno | +4% |
+| **Sênior** | **+17,6%** |
+
+O gap se concentra no topo, onde mulheres já são minoria (21% dos sêniores). Por cor/raça, profissionais brancos ganham **22,1% a mais** que pretos na média.
+
+---
+
+## 🧹 Principais Decisões de Limpeza
+
+| Problema | Decisão | Justificativa |
+|---|---|---|
+| Salário em texto (faixas) | Convertido para **ponto médio** numérico | Sem número não há estatística |
+| Colunas crípticas (`2.h_...`, `1.b_...`) | Detecção automática + renomeação de 13 colunas | Legibilidade e reprodutibilidade |
+| *Missing* em gênero e raça | **Não imputados** — mantido como "Não informado" | A não-resposta é informação |
 | *Missing* em salário (6,8%) | 354 linhas removidas | É a variável-resposta |
-| Mediana mascara gaps pequenos | Para gênero e raça usamos a **média** | Em faixas largas a mediana cai na mesma banda e esconde a diferença |
+| Mediana mascara gaps | Usamos **média** para gênero e raça | Em faixas largas a mediana cai na mesma banda |
 
-> A imprecisão do ponto médio (assume distribuição uniforme na faixa) é assumida explicitamente — por isso a **mediana** é a medida principal nas comparações grandes.
+> ⚠️ A imprecisão do ponto médio é assumida explicitamente — por isso a **mediana** é a medida principal nas comparações grandes.
 
-## Como reproduzir
+---
 
-1. Baixe a base do Kaggle (ver [`dados/README.md`](dados/README.md)).
-2. Abra `notebook/joaowilliam-guilhermefrazao-analise.ipynb` no Colab → **Executar tudo**.
-3. O notebook gera o CSV tratado; suba no Google Sheets e conecte ao Looker Studio (ver [`dados/GUIA_DASHBOARD.md`](dados/GUIA_DASHBOARD.md)).
+## 🚀 Como Reproduzir
 
-## Estrutura do repositório
+### Pré-requisitos
+- Python 3.10+
+- Google Colab (recomendado) ou Jupyter Notebook
+- Conta no Kaggle
+
+### 1. Baixe a base de dados
+```
+kaggle.com/datasets/datahackers/state-of-data-brazil-20242025
+```
+Instruções detalhadas em [`dados/README.md`](dados/README.md).
+
+### 2. Execute o notebook
+Abra `notebook/joaowilliam-guilhermefrazao-analise.ipynb` no Colab e clique em **Executar tudo**. O notebook detecta e baixa a base automaticamente (ou abre o upload manual).
+
+### 3. Monte o dashboard
+O notebook gera `state_of_data_tratado.csv`. Suba no Google Sheets e conecte ao Looker Studio seguindo o [`dados/GUIA_DASHBOARD.md`](dados/GUIA_DASHBOARD.md).
+
+---
+
+## 🛠️ Tecnologias
+
+| Camada | Tecnologia |
+|---|---|
+| Linguagem | Python 3 |
+| Análise de dados | pandas, numpy |
+| Visualização | matplotlib, seaborn |
+| Estatística | scipy (Spearman, skewness) |
+| Dashboard | Google Looker Studio |
+| Versionamento | GitHub |
+
+---
+
+## 📁 Estrutura do Repositório
 
 ```
 joaowilliam-guilhermefrazao-state-of-data/
-├── README.md
-├── notebook/   joaowilliam-guilhermefrazao-analise.ipynb
-├── relatorio/  joaowilliam-guilhermefrazao-relatorio.pdf
-└── dados/      README.md · GUIA_DASHBOARD.md · dashboard_dados.xlsx
+├── README.md                                        ← Este arquivo
+├── notebook/
+│   └── joaowilliam-guilhermefrazao-analise.ipynb   ← Análise completa (5 etapas)
+├── relatorio/
+│   └── joaowilliam-guilhermefrazao-relatorio.pdf   ← Relatório narrativo (5 páginas)
+└── dados/
+    ├── README.md                                    ← Como baixar a base do Kaggle
+    └── GUIA_DASHBOARD.md                            ← Passo a passo do dashboard
 ```
 
-## Referências
+> ⚠️ O CSV da base do Kaggle **não está versionado** neste repositório (15MB). Veja as instruções em `dados/README.md`.
 
-- **Dados:** State of Data Brazil 2024–2025 — Data Hackers + Bain & Company. `kaggle.com/datasets/datahackers/state-of-data-brazil-20242025`
+---
+
+## 📚 Referências
+
+- **Dados:** State of Data Brazil 2024–2025 — Data Hackers + Bain & Company
 - **Bibliotecas:** pandas, numpy, matplotlib, seaborn, scipy
 - **Dashboard:** Google Looker Studio
+
+---
+
+*© 2026 João William & Guilherme Frazão · UNIFSA*
