@@ -16,7 +16,7 @@ Este trabalho analisa a base **State of Data Brazil 2024–2025** (Data Hackers 
 
 **Autores:** João William · Guilherme Frazão
 **Disciplina:** Análise Avançada de Dados · UNIFSA
-**Professora:** Ma. Heloísa Guimarães
+**Professora:** Heloísa Guimarães
 
 ---
 
